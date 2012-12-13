@@ -1,0 +1,21 @@
+{
+<% if (!@tag.nil?) -%>
+tag => '<%=@tag%>',
+<% end -%>
+<% if (!@logfile.nil?) -%>
+logfile => '<%=@logfile%>',
+<% end -%>
+<% if (!@criticalpattern.nil?) -%>
+criticalpattern => '<%=@criticalpattern%>',
+<% end -%>
+<% if (!@warningpattern.nil?) -%>
+warningpattern => '<%=@warningpattern%>',
+<% end -%>
+<% if (!@rotation.nil?) -%>
+rotation => '<%=@rotation%>',
+<% end -%>
+<% if (!@type.nil?) -%>
+type => '<%=@type%>',
+<% end -%>
+options => '<%= @options.sort.collect { | opt,var | "#{opt}=#{var}" }.join(',') %>',
+},
