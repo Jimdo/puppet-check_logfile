@@ -8,9 +8,17 @@ logfile => '<%=@logfile%>',
 <% if (!@criticalpatterns.nil?) -%>
 criticalpatterns => '<%=@criticalpatterns%>',
 <% end -%>
+<% if (!@criticalexceptions.nil?) -%>
+criticalexceptions => '<%=@criticalexceptions%>',
+<% end -%>
 <% if (!@warningpatterns.nil?) -%>
 warningpatterns => '<%=@warningpatterns%>',
 <% end -%>
+<% if (!@warningexceptions.nil?) -%>
+warningexceptions => '<%=@warningexceptions%>',
+<% end -%>
+<% if (!@okpatterns.nil?) -%>
+okpatterns => '<%=@okpatterns%>',
 <% end -%>
 <% if (!@rotation.nil?) -%>
 rotation => '<%=@rotation%>',
