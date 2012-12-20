@@ -16,6 +16,7 @@ define check_logfile (
     target => 'check_logfile',
     content => template('check_logfile/check_logfile_fragment.erb'),
     order => 10,
+    require => Class['check_logfile::package']
   }
 
 }
