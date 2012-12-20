@@ -1,8 +1,8 @@
 define check_logfile (
   tag = undef,
   logfile = undef,
-  criticalpattern = undef,
-  warningpattern = undef,
+  criticalpatterns = undef,
+  warningpatterns = undef,
   options = undef,
   rotation = undef,
   type = undef,

@@ -5,11 +5,12 @@ tag => '<%=@tag%>',
 <% if (!@logfile.nil?) -%>
 logfile => '<%=@logfile%>',
 <% end -%>
-<% if (!@criticalpattern.nil?) -%>
-criticalpattern => '<%=@criticalpattern%>',
+<% if (!@criticalpatterns.nil?) -%>
+criticalpatterns => '<%=@criticalpatterns%>',
 <% end -%>
-<% if (!@warningpattern.nil?) -%>
-warningpattern => '<%=@warningpattern%>',
+<% if (!@warningpatterns.nil?) -%>
+warningpatterns => '<%=@warningpatterns%>',
+<% end -%>
 <% end -%>
 <% if (!@rotation.nil?) -%>
 rotation => '<%=@rotation%>',

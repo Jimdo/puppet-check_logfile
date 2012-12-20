@@ -15,7 +15,7 @@ describe "check_logfile" do
         .with_content(%r{^logfile => '/foo/bar',$})\
         .with_content(%r{^options => 'bb=baz,foo=feck',$})
       should_not contain_concat__fragment('check_logfile_foobar') \
-        .with_content(%r{^criticalpattern =>})
+        .with_content(%r{^criticalpatterns =>})
     }
   end
 
