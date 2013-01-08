@@ -26,5 +26,8 @@ rotation => '<%=@rotation%>',
 <% if (!@type.nil?) -%>
 type => '<%=@type%>',
 <% end -%>
-options => '<%= @options.sort.collect { | opt,var | "#{opt}=#{var}" }.join(',') %>',
+<%= @options.sort.collect { | opt,var | "options => '#{opt}=#{var}'," }.join("\n") %>
+<% if (!@logfilenocry.nil?) -%>
+options => '<%= @logfilenocry == true ? "logfilenocry" : "nologfilenocry" %>',
+<% end -%>
 },
