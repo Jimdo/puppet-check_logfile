@@ -1,14 +1,14 @@
 define check_logfile (
-  tag = undef,
-  logfile = undef,
-  criticalpatterns = undef,
-  criticalexceptions = undef,
-  warningpatterns = undef,
-  warningexceptions = undef,
-  okpatterns = undef,
-  options = undef,
-  rotation = undef,
-  type = undef,
+  $tag = undef,
+  $logfile = undef,
+  $criticalpatterns = undef,
+  $criticalexceptions = undef,
+  $warningpatterns = undef,
+  $warningexceptions = undef,
+  $okpatterns = undef,
+  $options = undef,
+  $rotation = undef,
+  $type = undef,
 ) {
 
   if ! is_hash($options) {
