@@ -19,4 +19,20 @@ describe "check_logfile" do
     }
   end
 
+  describe "with logfilenocry options" do
+    let(:title) { 'unattended-upgrade' }
+    let(:params) {{
+      :tag => 'unattended-upgrade',
+      :logfile => '/var/log/unattended-upgrades/unattended-upgrades.log',
+      :criticalpatterns => '^\d{4}-\d{2}-\d{2}\ \d{2}\:\d{2}\:\d{2}\,\d{3}\ ERROR\ ((error message:.*)|)',
+      :options => { 'sticky' => 86400, 'nologfilenocry' => 'true' },
+      :rotation => 'LOGLOG0GZLOG1GZ',
+    }}
+    it {
+      should contain_concat__fragment('check_logfile_unattended-upgrade') \
+        .with_content(%r{^options => 'nologfilenocry=true,sticky=86400',$})
+    }
+
+  end
+
 end
