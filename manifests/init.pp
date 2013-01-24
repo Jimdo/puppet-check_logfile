@@ -12,13 +12,13 @@ define check_logfile (
 ) {
 
   if ! is_hash($options) {
-    fail("options must be a hash ${options}") 
+    fail("options must be a hash ${options}")
   }
 
   concat::fragment { "check_logfile_${title}":
-    target => 'check_logfile',
+    target  => 'check_logfile',
     content => template('check_logfile/check_logfile_fragment.erb'),
-    order => 10,
+    order   => 10,
   }
 
 }
