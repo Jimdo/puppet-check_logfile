@@ -8,7 +8,7 @@ define check_logfile (
   $okpatterns = undef,
   $options = undef,
   $rotation = undef,
-  $type = undef,
+  $type = undef
 ) {
 
   if ! is_hash($options) {
