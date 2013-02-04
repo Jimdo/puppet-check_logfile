@@ -6,19 +6,19 @@ tag => '<%=@tag%>',
 logfile => '<%=@logfile%>',
 <% end -%>
 <% if (!@criticalpatterns.nil?) -%>
-criticalpatterns => '<%=@criticalpatterns%>',
+criticalpatterns => [ <%=@criticalpatterns.sort.collect { | pattern | "'#{pattern}'" }.join(', ') %> ],
 <% end -%>
 <% if (!@criticalexceptions.nil?) -%>
-criticalexceptions => '<%=@criticalexceptions%>',
+criticalexceptions => [ <%=@criticalexceptions.sort.collect { | pattern | "'#{pattern}'" }.join(', ') %> ],
 <% end -%>
 <% if (!@warningpatterns.nil?) -%>
-warningpatterns => '<%=@warningpatterns%>',
+warningpatterns => [ <%=@warningpatterns.sort.collect { | pattern | "'#{pattern}'" }.join(', ') %> ],
 <% end -%>
 <% if (!@warningexceptions.nil?) -%>
-warningexceptions => '<%=@warningexceptions%>',
+warningexceptions => [ <%=@warningexceptions.sort.collect { | pattern | "'#{pattern}'" }.join(', ') %> ],
 <% end -%>
 <% if (!@okpatterns.nil?) -%>
-okpatterns => '<%=@okpatterns%>',
+okpatterns => [ <%=@okpatterns.sort.collect { | pattern | "'#{pattern}'" }.join(', ') %> ],
 <% end -%>
 <% if (!@rotation.nil?) -%>
 rotation => '<%=@rotation%>',
@@ -26,5 +26,7 @@ rotation => '<%=@rotation%>',
 <% if (!@type.nil?) -%>
 type => '<%=@type%>',
 <% end -%>
+<% if (!@options.nil?) -%>
 options => '<%= @options.sort.collect { | opt,var | "#{opt}=#{var}" }.join(',') %>',
+<% end -%>
 },

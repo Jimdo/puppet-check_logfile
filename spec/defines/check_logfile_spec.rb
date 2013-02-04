@@ -30,9 +30,26 @@ describe "check_logfile" do
     }}
     it {
       should contain_concat__fragment('check_logfile_unattended-upgrade') \
+        .with_content(%r{^criticalpatterns => \[ '\^\\d\{4\}-\\d\{2\}-\\d\{2\}\\ \\d\{2\}\\\:\\d\{2\}\\\:\\d\{2\}\\,\\d\{3\}\\\ ERROR\\ \(\(error\ message\:\.\*\)\|\)'\ \],$}) \
         .with_content(%r{^options => 'nologfilenocry=true,sticky=86400',$})
     }
+  end
 
+  describe "with patterns array" do
+    let(:title) { 'unattended-upgrade' }
+    let(:params) {{
+      :tag => 'unattended-upgrade',
+      :logfile => '/var/log/unattended-upgrades/unattended-upgrades.log',
+      :criticalpatterns => '^\d{4}-\d{2}-\d{2}\ \d{2}\:\d{2}\:\d{2}\,\d{3}\ ERROR\ ((error message:.*)|)',
+      :warningpatterns => [ '^\d{4}-\d{2}-\d{2}\ \d{2}\:\d{2}\:\d{2}\,\d{3}\ WARNING package \'.*\' upgradable but fails to be marked for upgrade', '^\d{4}-\d{2}-\d{2}\ \d{2}\:\d{2}\:\d{2}\,\d{3}\ INFO Packages that are upgraded:\ $' ],
+      :options => { 'sticky' => 86400, 'nologfilenocry' => 'true' },
+      :rotation => 'LOGLOG0GZLOG1GZ',
+    }}
+    it {
+      should contain_concat__fragment('check_logfile_unattended-upgrade') \
+        .with_content(%r{^criticalpatterns => \[ '\^\\d\{4\}-\\d\{2\}-\\d\{2\}\\ \\d\{2\}\\\:\\d\{2\}\\\:\\d\{2\}\\,\\d\{3\}\\\ ERROR\\ \(\(error\ message\:\.\*\)\|\)'\ \],$}) \
+        .with_content(%r{^warningpatterns => \[ '\^\\d\{4\}-\\d\{2\}-\\d\{2\}\\ \\d\{2\}\\\:\\d\{2\}\\\:\\d\{2\}\\,\\d\{3\}\\\ INFO\ Packages\ that\ are\ upgraded\:\\ \$',\ \'\^\\d\{4\}-\\d\{2\}-\\d\{2\}\\ \\d\{2\}\\\:\\d\{2\}\\\:\\d\{2\}\\,\\d\{3\}\\\ WARNING\ package\ \'\.\*\'\ upgradable\ but\ fails\ to\ be\ marked\ for\ upgrade\'\ \],$})
+    }
   end
 
 end
