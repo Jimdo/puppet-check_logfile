@@ -6,19 +6,19 @@ tag => '<%=@tag%>',
 logfile => '<%=@logfile%>',
 <% end -%>
 <% if (!@criticalpatterns.nil?) -%>
-criticalpatterns => [ <%=@criticalpatterns.sort.collect { | pattern | "'#{pattern}'" }.join(', ') %> ],
+criticalpatterns => [ <%=@criticalpatterns.sort.collect { | pattern | "\"#{pattern}\"" }.join(', ') %> ],
 <% end -%>
 <% if (!@criticalexceptions.nil?) -%>
-criticalexceptions => [ <%=@criticalexceptions.sort.collect { | pattern | "'#{pattern}'" }.join(', ') %> ],
+criticalexceptions => [ <%=@criticalexceptions.sort.collect { | pattern | "\"#{pattern}\"" }.join(', ') %> ],
 <% end -%>
 <% if (!@warningpatterns.nil?) -%>
-warningpatterns => [ <%=@warningpatterns.sort.collect { | pattern | "'#{pattern}'" }.join(', ') %> ],
+warningpatterns => [ <%=@warningpatterns.sort.collect { | pattern | "\"#{pattern}\"" }.join(', ') %> ],
 <% end -%>
 <% if (!@warningexceptions.nil?) -%>
-warningexceptions => [ <%=@warningexceptions.sort.collect { | pattern | "'#{pattern}'" }.join(', ') %> ],
+warningexceptions => [ <%=@warningexceptions.sort.collect { | pattern | "\"#{pattern}\"" }.join(', ') %> ],
 <% end -%>
 <% if (!@okpatterns.nil?) -%>
-okpatterns => [ <%=@okpatterns.sort.collect { | pattern | "'#{pattern}'" }.join(', ') %> ],
+okpatterns => [ <%=@okpatterns.sort.collect { | pattern | "\"#{pattern}\"" }.join(', ') %> ],
 <% end -%>
 <% if (!@rotation.nil?) -%>
 rotation => '<%=@rotation%>',

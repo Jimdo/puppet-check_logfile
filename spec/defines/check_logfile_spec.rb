@@ -30,7 +30,7 @@ describe "check_logfile" do
     }}
     it {
       should contain_concat__fragment('check_logfile_unattended-upgrade') \
-        .with_content(%r{^criticalpatterns => \[ '\^\\d\{4\}-\\d\{2\}-\\d\{2\}\\ \\d\{2\}\\\:\\d\{2\}\\\:\\d\{2\}\\,\\d\{3\}\\\ ERROR\\ \(\(error\ message\:\.\*\)\|\)'\ \],$}) \
+        .with_content(%r{^criticalpatterns => \[ "\^\\d\{4\}-\\d\{2\}-\\d\{2\}\\ \\d\{2\}\\\:\\d\{2\}\\\:\\d\{2\}\\,\\d\{3\}\\\ ERROR\\ \(\(error\ message\:\.\*\)\|\)"\ \],$}) \
         .with_content(%r{^options => 'nologfilenocry=true,sticky=86400',$})
     }
   end
@@ -47,8 +47,8 @@ describe "check_logfile" do
     }}
     it {
       should contain_concat__fragment('check_logfile_unattended-upgrade') \
-        .with_content(%r{^criticalpatterns => \[ '\^\\d\{4\}-\\d\{2\}-\\d\{2\}\\ \\d\{2\}\\\:\\d\{2\}\\\:\\d\{2\}\\,\\d\{3\}\\\ ERROR\\ \(\(error\ message\:\.\*\)\|\)'\ \],$}) \
-        .with_content(%r{^warningpatterns => \[ '\^\\d\{4\}-\\d\{2\}-\\d\{2\}\\ \\d\{2\}\\\:\\d\{2\}\\\:\\d\{2\}\\,\\d\{3\}\\\ INFO\ Packages\ that\ are\ upgraded\:\\ \$',\ \'\^\\d\{4\}-\\d\{2\}-\\d\{2\}\\ \\d\{2\}\\\:\\d\{2\}\\\:\\d\{2\}\\,\\d\{3\}\\\ WARNING\ package\ \'\.\*\'\ upgradable\ but\ fails\ to\ be\ marked\ for\ upgrade\'\ \],$})
+        .with_content(%r{^criticalpatterns => \[ "\^\\d\{4\}-\\d\{2\}-\\d\{2\}\\ \\d\{2\}\\\:\\d\{2\}\\\:\\d\{2\}\\,\\d\{3\}\\\ ERROR\\ \(\(error\ message\:\.\*\)\|\)"\ \],$}) \
+        .with_content(%r{^warningpatterns => \[ "\^\\d\{4\}-\\d\{2\}-\\d\{2\}\\ \\d\{2\}\\\:\\d\{2\}\\\:\\d\{2\}\\,\\d\{3\}\\\ INFO\ Packages\ that\ are\ upgraded\:\\ \$",\ \"\^\\d\{4\}-\\d\{2\}-\\d\{2\}\\ \\d\{2\}\\\:\\d\{2\}\\\:\\d\{2\}\\,\\d\{3\}\\\ WARNING\ package\ \'\.\*\'\ upgradable\ but\ fails\ to\ be\ marked\ for\ upgrade\"\ \],$})
     }
   end
 
